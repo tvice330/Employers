@@ -5,8 +5,8 @@ namespace App\Http\Controllers\Employes;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PaginationRequest;
 use App\Models\Employe;
-use Illuminate\Http\Request;
-use Orchestra\Parser\Xml\Facade\XmlParser;
+//use Illuminate\Http\Request;
+//use Orchestra\Parser\Xml\Facade\XmlParser;
 
 class EmployesController extends Controller
 {
@@ -30,15 +30,15 @@ class EmployesController extends Controller
         return view('employes.404');
     }
 
-    public function importEmployes()
-    {
-        $xml = XmlParser :: load ( 'путь / к / выше.xml' );
-        $user = $xml -> parse ([
-            'id' => [ 'uses' => 'user.id' ],
-            'first_name' => [ 'uses' => 'first_name' ],
-            'last_name' => [ 'uses' => ' last_name' ],
-            'middle_name' => [ 'uses' => 'middle_name' ],
-            'birthday' => [ 'uses' => 'birthday' ],
-]);
-    }
+//    public function importEmployes()
+//    {
+//        $xml = XmlParser :: load ( 'путь / к / выше.xml' );
+//        $user = $xml -> parse ([
+//            'id' => [ 'uses' => 'user.id' ],
+//            'first_name' => [ 'uses' => 'first_name' ],
+//            'last_name' => [ 'uses' => ' last_name' ],
+//            'middle_name' => [ 'uses' => 'middle_name' ],
+//            'birthday' => [ 'uses' => 'birthday' ],
+//]);
+//    }
 }

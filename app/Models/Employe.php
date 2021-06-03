@@ -13,16 +13,26 @@ class Employe extends Model
         'id', ' first_name', 'last_name', 'middle_name', 'birthday', 'department_id', 'type_employe_id', 'active',
     ];
 
+    /**
+     * @param $query
+     * @return mixed
+     */
     public function scopeActive($query)
     {
         return $query->where('active', 1);
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function department()
     {
         return $this->belongsTo(Department::class);
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function type_employe()
     {
         return $this->belongsTo(TypeEmploye::class);
