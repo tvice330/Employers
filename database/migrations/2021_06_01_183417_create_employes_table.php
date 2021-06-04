@@ -21,6 +21,8 @@ class CreateEmployesTable extends Migration
             $table->dateTime('birthday');
             $table->integer('department_id');
             $table->integer('type_employe_id');
+            $table->string('position');
+            $table->boolean('active')->default(true);
             $table->timestamps();
         });
     }

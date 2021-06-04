@@ -10,8 +10,25 @@ class Employe extends Model
     use HasFactory;
 
     protected $fillable = [
-        'id', ' first_name', 'last_name', 'middle_name', 'birthday', 'department_id', 'type_employe_id', 'active',
+        'first_name',
+        'last_name',
+        'middle_name',
+        'birthday',
+        'department_id',
+        'type_employe_id',
+        'active',
+        'position'
     ];
+
+    protected $appends = ['full_name'];
+
+    /**
+     * @return string
+     */
+    public function getFullNameAttribute()
+    {
+        return $this->first_name . ' ' . $this->last_name . ' ' . $this->middle_name;
+    }
 
     /**
      * @param $query
@@ -19,7 +36,7 @@ class Employe extends Model
      */
     public function scopeActive($query)
     {
-        return $query->where('active', 1);
+        return $query->where('active', true);
     }
 
     /**

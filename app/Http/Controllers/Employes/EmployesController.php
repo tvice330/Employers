@@ -5,20 +5,20 @@ namespace App\Http\Controllers\Employes;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PaginationRequest;
 use App\Models\Employe;
-//use Illuminate\Http\Request;
-//use Orchestra\Parser\Xml\Facade\XmlParser;
 
 class EmployesController extends Controller
 {
     public function index(PaginationRequest $request)
     {
-        $employes = Employe::active()->paginate(10);
-        return view('employes.employes', ['employes' => $employes ]);
+        $data = $request->validated();
+        $employes = Employe::active()->paginate($data['paginate'] ?? 10);
+        return view('employes.employes', ['values' => $employes]);
     }
 
     public function show(PaginationRequest $request, $id)
     {
-        $employes = Employe::active()->where('department_id', $id)->paginate(10);
+        $data = $request->validated();
+        $employes = Employe::active()->where('department_id', $id)->paginate($data['paginate'] ?? 10);
         if($employes->total() > 0) {
             return view('employes.departments', ['employes' => $employes ]);
         }
@@ -32,13 +32,12 @@ class EmployesController extends Controller
 
 //    public function importEmployes()
 //    {
-//        $xml = XmlParser :: load ( 'путь / к / выше.xml' );
-//        $user = $xml -> parse ([
-//            'id' => [ 'uses' => 'user.id' ],
-//            'first_name' => [ 'uses' => 'first_name' ],
-//            'last_name' => [ 'uses' => ' last_name' ],
-//            'middle_name' => [ 'uses' => 'middle_name' ],
-//            'birthday' => [ 'uses' => 'birthday' ],
-//]);
+//        $xml = XmlParser::load('employers.xml');
+//        $user = $xml->parse([
+//            'first_name' => ['uses' => 'first_name'],
+//            'last_name' => ['uses' => ' last_name'],
+//            'middle_name' => ['uses' => 'middle_name'],
+//            'birthday' => ['uses' => 'birthday'],
+//        ]);
 //    }
 }
