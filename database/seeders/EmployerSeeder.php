@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 use App\Models\Employe;
+use Carbon\Carbon;
+use Database\Factories\EmployeFactory;
 use Illuminate\Database\Seeder;
 
 class EmployerSeeder extends Seeder
@@ -14,8 +16,8 @@ class EmployerSeeder extends Seeder
      */
     public function run()
     {
-        Employe::create([
-
-        ]);
+        Employe::factory()
+            ->count(100)
+            ->create();
     }
 }

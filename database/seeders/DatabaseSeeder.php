@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use Database\Factories\EmployeFactory;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -15,5 +16,6 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(DepartmentSeeder::class);
         $this->call(TypeEmployeSeeder::class);
+        $this->call(EmployerSeeder::class);
     }
 }

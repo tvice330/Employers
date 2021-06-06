@@ -15,10 +15,13 @@ class TypeEmployeSeeder extends Seeder
     public function run()
     {
         TypeEmploye::create([
-            'title' => 'ставка'
+            'title' => 'ставка',
+            'alias' => 'all'
         ]);
+
         TypeEmploye::create([
-            'title' => 'почасовая оплата'
+            'title' => 'почасовая оплата',
+            'alias' => 'hour'
         ]);
     }
 }

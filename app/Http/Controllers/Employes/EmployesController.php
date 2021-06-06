@@ -4,27 +4,31 @@ namespace App\Http\Controllers\Employes;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PaginationRequest;
+use App\Models\Department;
 use App\Models\Employe;
 
 class EmployesController extends Controller
 {
+    /**
+     * @param PaginationRequest $request
+     * @return array|false|\Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|mixed
+     */
     public function index(PaginationRequest $request)
     {
         $data = $request->validated();
-        $employes = Employe::active()->paginate($data['paginate'] ?? 10);
-        return view('employes.employes', ['values' => $employes]);
+        $employes = Employe::active()
+            ->with(['department', 'type_employe'])
+            ->paginate($data['paginate'] ?? 10);
+        $department= Department::get();
+        return view('employes.employes', [
+            'employes' => $employes,
+            'department' => $department
+        ]);
     }
 
-    public function show(PaginationRequest $request, $id)
-    {
-        $data = $request->validated();
-        $employes = Employe::active()->where('department_id', $id)->paginate($data['paginate'] ?? 10);
-        if($employes->total() > 0) {
-            return view('employes.departments', ['employes' => $employes ]);
-        }
-        return redirect()->route('404');
-    }
-
+    /**
+     * @return array|false|\Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|mixed
+     */
     public function notFound()
     {
         return view('employes.404');

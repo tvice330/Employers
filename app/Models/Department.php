@@ -22,4 +22,8 @@ class Department extends Model
     {
         return $query->orderBy('position');
     }
+    public function employe()
+    {
+        return $this->belongsToMany(Employe::class);
+    }
 }

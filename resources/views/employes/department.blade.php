@@ -19,11 +19,7 @@
 </head>
 <body>
 <div class="container">
-    <div class="row">
-        <div class="col-md-12">
-            <h1 class="mt-5 title_employers">Отделы</h1>
-        </div>
-    </div>
+    <h1 class="text-center mt-5">Отделы</h1>
     <div class="row">
         <div class="col-md-2"></div>
         <div class="col-md-8">
@@ -32,7 +28,7 @@
                     <ul class="navbar-nav">
                         <li class="nav-item active">
                             <a class="nav-link" href="{{ route('employers') }}">
-                               Все сотрудники <span class="sr-only">(current)</span>
+                                Все сотрудники <span class="sr-only">(current)</span>
                             </a>
                         </li>
                         @foreach($department as $item)
@@ -56,22 +52,22 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item active">
-                            <a class="nav-link" href="{{ route('employers', ['paginate' => 10]) }}">
+                            <a class="nav-link" href="{{ route('department', ['id' => $id, 'paginate' => 10]) }}">
                                 По 10 <span class="sr-only">(current)</span>
                             </a>
                         </li>
                         <li class="nav-item active">
-                            <a class="nav-link" href="{{ route('employers', ['paginate' => 25]) }}">
+                            <a class="nav-link" href="{{ route('department', ['id' => $id, 'paginate' => 25]) }}">
                                 По 25 <span class="sr-only">(current)</span>
                             </a>
                         </li>
                         <li class="nav-item active">
-                            <a class="nav-link" href="{{ route('employers', ['paginate' => 50]) }}">
+                            <a class="nav-link" href="{{ route('department', ['id' => $id, 'paginate' => 50]) }}">
                                 По 50 <span class="sr-only">(current)</span>
                             </a>
                         </li>
                         <li class="nav-item active">
-                            <a class="nav-link" href="{{ route('employers', ['paginate' => 100]) }}">
+                            <a class="nav-link" href="{{ route('department', ['id' => $id, 'paginate' => 100]) }}">
                                 По 100 <span class="sr-only">(current)</span>
                             </a>
                         </li>
@@ -87,14 +83,14 @@
             @if($employes->total() > 0)
                 <table class="table table-striped">
                     <thead class="thead-dark">
-                        <tr>
-                            <th scope="col">ФИО</th>
-                            <th scope="col">Дата рождения</th>
-                            <th scope="col">Отдел</th>
-                            <th scope="col">Должность</th>
-                            <th scope="col">Тип оплаты сотрудника</th>
-                            <th scope="col">Оплата за месяц</th>
-                        </tr>
+                    <tr>
+                        <th scope="col">ФИО</th>
+                        <th scope="col">Дата рождения</th>
+                        <th scope="col">Отдел</th>
+                        <th scope="col">Должность</th>
+                        <th scope="col">Тип сотрудника</th>
+                        <th scope="col">Оплата за месяц</th>
+                    </tr>
                     </thead>
                     <tbody>
                     @foreach($employes as $value)
@@ -109,7 +105,7 @@
                     @endforeach
                     </tbody>
                 </table>
-            {{ $employes->links('pagination::bootstrap-4') }}
+                {{ $employes->links('pagination::bootstrap-4') }}
             @else
                 <h5 class="text-center mt-5">В данный момент сотудников нет</h5>
             @endif
@@ -117,6 +113,5 @@
         <div class="col-md-2"></div>
     </div>
 </div>
-
 </body>
 </html>

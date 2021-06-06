@@ -15,7 +15,7 @@ class Employe extends Model
         'middle_name',
         'birthday',
         'department_id',
-        'type_employe_id',
+        'type_employes_id',
         'active',
         'position'
     ];
@@ -54,4 +54,5 @@ class Employe extends Model
     {
         return $this->belongsTo(TypeEmploye::class);
     }
+
 }

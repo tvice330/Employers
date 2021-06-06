@@ -23,6 +23,8 @@ class CreateEmployesTable extends Migration
             $table->integer('type_employe_id');
             $table->string('position');
             $table->boolean('active')->default(true);
+            $table->integer('count_hours')->default(0);
+            $table->integer('amount_hour')->default(0);
             $table->timestamps();
         });
     }
